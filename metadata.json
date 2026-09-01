@@ -1,0 +1,6 @@
+{
+  "name": "GraminSaathi",
+  "description": "AI Business Advisor and Loan Scheme Calculator for Rural Micro-Entrepreneurs",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
