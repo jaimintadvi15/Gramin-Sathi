@@ -864,8 +864,8 @@ export default function App() {
                       type="button"
                       onClick={() => dispatch({ type: 'SET_MARGIN_CAPITAL', payload: preset })}
                       className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all ${marginCapital === preset
-                          ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs'
-                          : 'bg-stone-100 text-stone-700 border-stone-200 hover:bg-stone-200/80'
+                        ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs'
+                        : 'bg-stone-100 text-stone-700 border-stone-200 hover:bg-stone-200/80'
                         }`}
                     >
                       ₹{preset >= 100000 ? `${preset / 100000} Lakh` : `${preset / 1000}k`}
@@ -912,8 +912,8 @@ export default function App() {
                         key={cat.id}
                         onClick={() => dispatch({ type: 'SET_SELECTED_CATEGORY', payload: cat.id })}
                         className={`p-4 rounded-2xl border-2 cursor-pointer transition-all flex flex-col items-start justify-between min-h-[100px] ${isSelected
-                            ? 'border-emerald-600 bg-emerald-50/60 shadow-xs scale-[1.02]'
-                            : 'border-stone-200 bg-white hover:border-stone-300 hover:bg-stone-50/50'
+                          ? 'border-emerald-600 bg-emerald-50/60 shadow-xs scale-[1.02]'
+                          : 'border-stone-200 bg-white hover:border-stone-300 hover:bg-stone-50/50'
                           }`}
                       >
                         <div className="flex items-center justify-between w-full">
@@ -1015,8 +1015,8 @@ export default function App() {
                   type="button"
                   onClick={toggleSpeechSummary}
                   className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs border transition-all ${isSpeaking
-                      ? 'bg-amber-600 text-white border-amber-600 shadow-md animate-pulse'
-                      : 'bg-amber-50 hover:bg-amber-100 text-amber-900 border-amber-300'
+                    ? 'bg-amber-600 text-white border-amber-600 shadow-md animate-pulse'
+                    : 'bg-amber-50 hover:bg-amber-100 text-amber-900 border-amber-300'
                     }`}
                 >
                   {isSpeaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-amber-700" />}
