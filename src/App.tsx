@@ -322,7 +322,7 @@ interface WizardState {
   hasReport: boolean;
 }
 
-type WizardAction = 
+type WizardAction =
   | { type: 'SET_STEP'; payload: WizardStep }
   | { type: 'NEXT_STEP' }
   | { type: 'PREV_STEP' }
@@ -384,7 +384,7 @@ export default function App() {
   const [wizardState, dispatch] = useReducer(wizardReducer, initialWizardState);
   const { step, locationInput, selectedLocation, isLocationDropdownOpen, marginCapital, selectedCategory, analysisStep, hasReport } = wizardState;
   const isAnalyzing = step === 4;
-  
+
   // Navigation State
   const [activeNav, setActiveNav] = useState<'home' | 'new' | 'history' | 'profile'>('home');
   const [showHistoryModal, setShowHistoryModal] = useState(false);
@@ -554,7 +554,7 @@ export default function App() {
   }, []);
 
   // Filter locations for dropdown
-  const filteredLocations = POPULAR_LOCATIONS.filter(loc => 
+  const filteredLocations = POPULAR_LOCATIONS.filter(loc =>
     loc.name.toLowerCase().includes(locationInput.toLowerCase()) ||
     loc.district.toLowerCase().includes(locationInput.toLowerCase()) ||
     loc.state.toLowerCase().includes(locationInput.toLowerCase())
@@ -562,13 +562,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-stone-800 font-sans pb-28 md:pb-12">
-      
+
       {/* Top Utility Header & Navigation */}
       <header id="main-header" className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-amber-200/70 shadow-xs">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-          
+
           {/* Logo & Brand */}
-          <div 
+          <div
             onClick={() => { setActiveNav('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             className="flex items-center gap-3 cursor-pointer group"
           >
@@ -596,27 +596,24 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setLang('en')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
-                  lang === 'en' ? 'bg-white text-emerald-900 shadow-xs' : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${lang === 'en' ? 'bg-white text-emerald-900 shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 EN
               </button>
               <button
                 type="button"
                 onClick={() => setLang('hi')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
-                  lang === 'hi' ? 'bg-white text-emerald-900 shadow-xs' : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${lang === 'hi' ? 'bg-white text-emerald-900 shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 हिंदी
               </button>
               <button
                 type="button"
                 onClick={() => setLang('gu')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${
-                  lang === 'gu' ? 'bg-white text-emerald-900 shadow-xs' : 'text-stone-600 hover:text-stone-900'
-                }`}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all ${lang === 'gu' ? 'bg-white text-emerald-900 shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  }`}
               >
                 ગુજરાતી
               </button>
@@ -638,7 +635,7 @@ export default function App() {
       {/* SECTION 1: HERO / LANDING SECTION */}
       <section className="relative overflow-hidden pt-8 pb-12 sm:py-16 bg-gradient-to-b from-amber-100/50 via-amber-50/20 to-[#FAF7F2] border-b border-amber-200/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          
+
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-800/10 border border-emerald-700/20 text-emerald-900 text-xs font-semibold mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
@@ -712,7 +709,7 @@ export default function App() {
 
       {/* SECTION 2: INPUT FORM SECTION */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 -mt-6 relative z-10 transition-all duration-300">
-        <div 
+        <div
           ref={formRef}
           id="assessment-form-card"
           className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-stone-200/70 border border-stone-200"
@@ -758,7 +755,7 @@ export default function App() {
           </div>
 
           <form onSubmit={handleGenerateReport} className="mt-6 space-y-6">
-            
+
             {/* Step 1: Location */}
             {step === 1 && (
               <div className="animate-in fade-in slide-in-from-right-4 duration-300">
@@ -812,7 +809,7 @@ export default function App() {
                     ))}
                   </div>
                 )}
-                
+
                 <div className="pt-8 flex justify-end">
                   <button
                     type="button"
@@ -866,11 +863,10 @@ export default function App() {
                       key={preset}
                       type="button"
                       onClick={() => dispatch({ type: 'SET_MARGIN_CAPITAL', payload: preset })}
-                      className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all ${
-                        marginCapital === preset
+                      className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all ${marginCapital === preset
                           ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs'
                           : 'bg-stone-100 text-stone-700 border-stone-200 hover:bg-stone-200/80'
-                      }`}
+                        }`}
                     >
                       ₹{preset >= 100000 ? `${preset / 100000} Lakh` : `${preset / 1000}k`}
                     </button>
@@ -915,16 +911,14 @@ export default function App() {
                       <div
                         key={cat.id}
                         onClick={() => dispatch({ type: 'SET_SELECTED_CATEGORY', payload: cat.id })}
-                        className={`p-4 rounded-2xl border-2 cursor-pointer transition-all flex flex-col items-start justify-between min-h-[100px] ${
-                          isSelected
+                        className={`p-4 rounded-2xl border-2 cursor-pointer transition-all flex flex-col items-start justify-between min-h-[100px] ${isSelected
                             ? 'border-emerald-600 bg-emerald-50/60 shadow-xs scale-[1.02]'
                             : 'border-stone-200 bg-white hover:border-stone-300 hover:bg-stone-50/50'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center justify-between w-full">
-                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                            isSelected ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
-                          }`}>
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isSelected ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-700'
+                            }`}>
                             <Icon className="w-5 h-5" />
                           </div>
                           {isSelected && (
@@ -933,9 +927,8 @@ export default function App() {
                             </div>
                           )}
                         </div>
-                        <span className={`text-sm font-bold mt-3 leading-snug ${
-                          isSelected ? 'text-emerald-950' : 'text-stone-800'
-                        }`}>
+                        <span className={`text-sm font-bold mt-3 leading-snug ${isSelected ? 'text-emerald-950' : 'text-stone-800'
+                          }`}>
                           {label}
                         </span>
                       </div>
@@ -993,7 +986,7 @@ export default function App() {
       {/* SECTION 3: RESULTS DASHBOARD */}
       {hasReport && (
         <section ref={resultsRef} className="max-w-5xl mx-auto px-4 sm:px-6 mt-12 scroll-mt-20">
-          
+
           {/* Results Header Card */}
           <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-stone-200 mb-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-stone-100">
@@ -1021,11 +1014,10 @@ export default function App() {
                 <button
                   type="button"
                   onClick={toggleSpeechSummary}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs border transition-all ${
-                    isSpeaking 
+                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs border transition-all ${isSpeaking
                       ? 'bg-amber-600 text-white border-amber-600 shadow-md animate-pulse'
                       : 'bg-amber-50 hover:bg-amber-100 text-amber-900 border-amber-300'
-                  }`}
+                    }`}
                 >
                   {isSpeaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-amber-700" />}
                   <span>{isSpeaking ? t.stopAudio : t.listenAudio}</span>
@@ -1048,10 +1040,10 @@ export default function App() {
           {/* TAB 1: FEASIBILITY REPORT */}
           {step === 5 && (
             <div className="space-y-6 animate-in fade-in duration-300">
-              
+
               {/* Row 1: Market Reach & Opportunity Analysis */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
+
                 {/* 1. Market Reach Card */}
                 <div className="bg-white rounded-3xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between">
                   <div>
@@ -1154,7 +1146,7 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  
+
                   {/* Strengths (Green) */}
                   <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200">
                     <div className="flex items-center gap-2 mb-2">
@@ -1220,7 +1212,7 @@ export default function App() {
 
               {/* Row 3: Competitor Density & Suggested Pricing */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
+
                 {/* 4. Competitor Density Card (Gauge Visual) */}
                 <div className="bg-white rounded-3xl p-6 shadow-sm border border-stone-200">
                   <div className="flex items-center justify-between mb-4">
@@ -1313,10 +1305,10 @@ export default function App() {
           {/* TAB 2: FINANCIAL ROADMAP */}
           {step === 6 && (
             <div className="space-y-6 animate-in fade-in duration-300">
-              
+
               {/* 1. Metric Summary Cards Row */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                
+
                 {/* Project Cost */}
                 <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-xs border border-stone-200">
                   <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">Total Project Cost</span>
@@ -1567,16 +1559,15 @@ export default function App() {
       {/* MOBILE BOTTOM NAVIGATION BAR */}
       <nav id="mobile-bottom-nav" className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-stone-200/90 shadow-2xl py-2 px-4 sm:hidden">
         <div className="grid grid-cols-4 gap-1 items-center max-w-md mx-auto">
-          
+
           <button
             type="button"
             onClick={() => {
               setActiveNav('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeNav === 'home' ? 'text-emerald-800 font-bold' : 'text-stone-500'
-            }`}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${activeNav === 'home' ? 'text-emerald-800 font-bold' : 'text-stone-500'
+              }`}
           >
             <Sprout className="w-5 h-5" />
             <span className="text-[10px] mt-0.5">{t.navHome}</span>
@@ -1588,9 +1579,8 @@ export default function App() {
               setActiveNav('new');
               scrollToForm();
             }}
-            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeNav === 'new' ? 'text-emerald-800 font-bold' : 'text-stone-500'
-            }`}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${activeNav === 'new' ? 'text-emerald-800 font-bold' : 'text-stone-500'
+              }`}
           >
             <Sparkles className="w-5 h-5 text-amber-600" />
             <span className="text-[10px] mt-0.5">{t.navNewReport}</span>
@@ -1602,9 +1592,8 @@ export default function App() {
               setActiveNav('history');
               setShowHistoryModal(true);
             }}
-            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeNav === 'history' ? 'text-emerald-800 font-bold' : 'text-stone-500'
-            }`}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${activeNav === 'history' ? 'text-emerald-800 font-bold' : 'text-stone-500'
+              }`}
           >
             <History className="w-5 h-5" />
             <span className="text-[10px] mt-0.5">{t.navHistory}</span>
@@ -1616,9 +1605,8 @@ export default function App() {
               setActiveNav('profile');
               setShowProfileModal(true);
             }}
-            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${
-              activeNav === 'profile' ? 'text-emerald-800 font-bold' : 'text-stone-500'
-            }`}
+            className={`flex flex-col items-center justify-center py-1 rounded-xl transition-colors ${activeNav === 'profile' ? 'text-emerald-800 font-bold' : 'text-stone-500'
+              }`}
           >
             <User className="w-5 h-5" />
             <span className="text-[10px] mt-0.5">{t.navProfile}</span>
@@ -1651,7 +1639,7 @@ export default function App() {
                 { title: "Handloom Khadi & Tailoring", location: "Bardoli, Gujarat", cost: "₹1,80,000", date: "2 days ago", scheme: "PMEGP (35% Subsidy)" },
                 { title: "Organic Spice & Mustard Expeller", location: "Varanasi, UP", cost: "₹4,20,000", date: "Last week", scheme: "PMFME Scheme" }
               ].map((item, idx) => (
-                <div 
+                <div
                   key={idx}
                   onClick={() => {
                     dispatch({ type: 'SET_LOCATION_INPUT', payload: item.location });
